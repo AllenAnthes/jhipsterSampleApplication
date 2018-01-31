@@ -1,0 +1,21 @@
+
+entity PIN {
+	account String,
+    pin String,
+    create_ip String,
+    create_user String,
+    create_timestamp LocalDateTime,
+    expire_timestamp LocalDateTime,
+    claim_timestamp LocalDateTime,
+    claim_user String,
+    claim_ip String
+}
+
+// Set pagination options
+paginate PIN with infinite-scroll
+
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix
