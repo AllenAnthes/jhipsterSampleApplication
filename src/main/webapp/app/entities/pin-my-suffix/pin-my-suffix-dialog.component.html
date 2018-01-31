@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPINLabel">Create or edit a PIN</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!pIN.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="pIN.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_account">Account</label>
+            <input type="text" class="form-control" name="account" id="field_account"
+                [(ngModel)]="pIN.account" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_pin">Pin</label>
+            <input type="text" class="form-control" name="pin" id="field_pin"
+                [(ngModel)]="pIN.pin" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createip">Createip</label>
+            <input type="text" class="form-control" name="createip" id="field_createip"
+                [(ngModel)]="pIN.createip" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createuser">Createuser</label>
+            <input type="text" class="form-control" name="createuser" id="field_createuser"
+                [(ngModel)]="pIN.createuser" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createtimestamp">Createtimestamp</label>
+            <div class="d-flex">
+                <input id="field_createtimestamp" type="datetime-local" class="form-control" name="createtimestamp" [(ngModel)]="pIN.createtimestamp"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_expiretimestamp">Expiretimestamp</label>
+            <div class="d-flex">
+                <input id="field_expiretimestamp" type="datetime-local" class="form-control" name="expiretimestamp" [(ngModel)]="pIN.expiretimestamp"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_claimtimestamp">Claimtimestamp</label>
+            <div class="d-flex">
+                <input id="field_claimtimestamp" type="datetime-local" class="form-control" name="claimtimestamp" [(ngModel)]="pIN.claimtimestamp"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_claimuser">Claimuser</label>
+            <input type="text" class="form-control" name="claimuser" id="field_claimuser"
+                [(ngModel)]="pIN.claimuser" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_claimip">Claimip</label>
+            <input type="text" class="form-control" name="claimip" id="field_claimip"
+                [(ngModel)]="pIN.claimip" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

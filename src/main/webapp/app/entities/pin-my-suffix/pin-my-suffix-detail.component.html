@@ -1,0 +1,58 @@
+
+<div *ngIf="pIN">
+    <h2><span>PIN</span> {{pIN.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Account</span></dt>
+        <dd>
+            <span>{{pIN.account}}</span>
+        </dd>
+        <dt><span>Pin</span></dt>
+        <dd>
+            <span>{{pIN.pin}}</span>
+        </dd>
+        <dt><span>Createip</span></dt>
+        <dd>
+            <span>{{pIN.createip}}</span>
+        </dd>
+        <dt><span>Createuser</span></dt>
+        <dd>
+            <span>{{pIN.createuser}}</span>
+        </dd>
+        <dt><span>Createtimestamp</span></dt>
+        <dd>
+            <span>{{pIN.createtimestamp | date:'medium'}}</span>
+        </dd>
+        <dt><span>Expiretimestamp</span></dt>
+        <dd>
+            <span>{{pIN.expiretimestamp | date:'medium'}}</span>
+        </dd>
+        <dt><span>Claimtimestamp</span></dt>
+        <dd>
+            <span>{{pIN.claimtimestamp | date:'medium'}}</span>
+        </dd>
+        <dt><span>Claimuser</span></dt>
+        <dd>
+            <span>{{pIN.claimuser}}</span>
+        </dd>
+        <dt><span>Claimip</span></dt>
+        <dd>
+            <span>{{pIN.claimip}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pin-my-suffix/'+ pIN.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

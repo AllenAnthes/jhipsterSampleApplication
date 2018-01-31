@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>PINS</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pin-my-suffix" [routerLink]="['/', { outlets: { popup: ['pin-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new PIN
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pINS">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="account"><span>Account</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pin"><span>Pin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createip"><span>Createip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createuser"><span>Createuser</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createtimestamp"><span>Createtimestamp</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="expiretimestamp"><span>Expiretimestamp</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="claimtimestamp"><span>Claimtimestamp</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="claimuser"><span>Claimuser</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="claimip"><span>Claimip</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let pIN of pINS ;trackBy: trackId">
+                <td><a [routerLink]="['../pin-my-suffix', pIN.id ]">{{pIN.id}}</a></td>
+                <td>{{pIN.account}}</td>
+                <td>{{pIN.pin}}</td>
+                <td>{{pIN.createip}}</td>
+                <td>{{pIN.createuser}}</td>
+                <td>{{pIN.createtimestamp | date:'medium'}}</td>
+                <td>{{pIN.expiretimestamp | date:'medium'}}</td>
+                <td>{{pIN.claimtimestamp | date:'medium'}}</td>
+                <td>{{pIN.claimuser}}</td>
+                <td>{{pIN.claimip}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pin-my-suffix', pIN.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pin-my-suffix/'+ pIN.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pin-my-suffix/'+ pIN.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

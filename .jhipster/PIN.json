@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "account",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createuser",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createtimestamp",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "expiretimestamp",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "claimtimestamp",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "claimuser",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "claimip",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180131160740",
+    "entityTableName": "pin",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

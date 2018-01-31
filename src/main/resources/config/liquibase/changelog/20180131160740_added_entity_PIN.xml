@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity PIN.
+    -->
+    <changeSet id="20180131160740-1" author="jhipster">
+        <createTable tableName="pin">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="jhi_account" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pin" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="createip" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="createuser" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="createtimestamp" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiretimestamp" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="claimtimestamp" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="claimuser" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="claimip" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="pin" columnName="createtimestamp" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pin" columnName="expiretimestamp" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pin" columnName="claimtimestamp" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

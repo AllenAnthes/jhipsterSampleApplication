@@ -4,9 +4,9 @@ entity PIN {
     pin String,
     create_ip String,
     create_user String,
-    create_timestamp LocalDateTime,
-    expire_timestamp LocalDateTime,
-    claim_timestamp LocalDateTime,
+    create_timestamp Instant,
+    expire_timestamp Instant,
+    claim_timestamp Instant,
     claim_user String,
     claim_ip String
 }
